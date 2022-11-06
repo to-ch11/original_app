@@ -1,0 +1,14 @@
+ja:
+  enums:
+    item:
+      large_classification:
+        granular: 粒状
+        powdery: 粉状
+        liquid: 液状
+        blend: ブレンド
+      small_classification:
+        high_type: 高度
+        low_type: 低度
+        nk_type: NK型
+        l_type: L型
+        v_type: V型

@@ -1,0 +1,4 @@
+class ItemFactoryRelation < ApplicationRecord
+  belongs_to :item
+  belongs_to :factory
+end

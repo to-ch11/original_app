@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: one
+  year: 2022-11-06
+  month: 2022-11-06
+  shipping_count: 1
+
+two:
+  item_id: two
+  year: 2022-11-06
+  month: 2022-11-06
+  shipping_count: 1

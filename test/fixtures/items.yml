@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  name: MyString
+  large_classification: 1
+  small_classification: 1
+  component_n: 1
+  component_p: 1
+  component_k: 1
+
+two:
+  code: MyString
+  name: MyString
+  large_classification: 1
+  small_classification: 1
+  component_n: 1
+  component_p: 1
+  component_k: 1

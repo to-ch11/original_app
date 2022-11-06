@@ -1,0 +1,38 @@
+<% @page_title = "出荷計画一覧" %>
+<h2><%= @page_title %></h2>
+
+<%= link_to "新規登録", :new_shipping %>
+ 
+<% if @shippings.present? %>
+<table>
+	<thead>
+	<table border="1">
+　<tr>
+　　<th>品目コード</th>
+　　<th>品目名称</th>
+　　<th>支店</th>
+　　<th>工場</th>
+		<% (0..11).each do |n| %>
+		<th><%= (Date.current + n.month).month %>月</th>
+		<% end %>
+	　</tr>
+	</thead>
+	<tbody>
+		<% @items.each do |item| %>
+			<tr>
+				<td><%= item.code %></td>
+				<td><%= item.name %></td>
+				<% item.shippings.each do |shipping| %>
+   　　   <td><%= f.text_field "shipping_#{shipping.id}_#{shipping.date_on}" %></td>
+				<td>
+				  <%= link_to "編集", [:edit, shipping] %>
+				</td>
+			<% end %>
+			</tr>
+	</tbody>
+</table>
+		<% end %>
+ 
+<% else %>
+	<p>登録された出荷計画はありません。</p>
+<% end %>

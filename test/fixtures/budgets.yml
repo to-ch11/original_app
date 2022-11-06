@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_on: 2022-10-25
+  quantity: 1
+
+two:
+  date_on: 2022-10-25
+  quantity: 1

@@ -1,0 +1,45 @@
+<table>
+  <tr>
+    <th><%= form.label :code, "品目コード" %></th>
+    <td><%= form.text_field :code %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :name, "品目名称" %></th>
+    <td><%= form.text_field :name %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :large_classification, '大分類' %></th>
+    <td><%= form.collection_select :large_classification, Item.large_classifications_i18n, :first, :last, prompt: '選択してください' %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :small_classification, '小分類' %></th>
+    <td><%= form.collection_select :small_classification, Item.small_classifications_i18n, :first, :last, prompt: '選択してください' %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :component_n, '成分(N)' %></th>
+    <td><%= form.number_field :component_n, step: "0.1" %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :component_p, '成分(P)' %></th>
+    <td><%= form.number_field :component_p, step: "0.1" %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :component_k, '成分(K)' %></th>
+    <td><%= form.number_field :component_k, step: "0.1" %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :branches, '支店' %></th>
+    <td><%= collection_check_boxes(:item, :branch_ids, Branch.all, :id, :name) do |b| %>
+        <%= b.label { b.check_box + b.text } %>
+        <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= form.label :factories, '工場' %></th>
+    <td><%= collection_check_boxes(:item, :factory_ids, Factory.all, :id, :name) do |c| %>
+        <%= c.label { c.check_box + c.text } %>
+        <% end %>
+    </td>
+  </tr>
+</table>
+  <%= link_to "品目一覧に戻る", :items %>

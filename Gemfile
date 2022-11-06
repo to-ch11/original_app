@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.6"
 
+gem "enum_help"
 gem "devise"
 gem "rails", "~> 7.0.4"
 gem "sprockets-rails"

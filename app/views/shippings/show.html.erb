@@ -1,0 +1,17 @@
+<h2>出荷計画の詳細</h2>
+ 
+<%= link_to "編集", [:edit, @shipping] %>
+<%= link_to "出荷計画一覧へ戻る", :shippings %>
+ 
+<table>
+ 
+	<tr>
+    <th>数量</th>
+    <td><%= @shipping.name %></td>
+  </tr>
+ 
+	<tr>
+		<th>出荷日</th>
+		<td><%= @shipping.date_on %></td>
+	</tr>
+</table>

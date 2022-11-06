@@ -1,0 +1,40 @@
+<%= link_to "新規品目登録", :new_item %>
+
+<% if @items.present? %>
+<table>
+	<thead>
+		<tr>
+			<th>品目コード</th>
+			<th>品目名称</th>
+			<th>大分類</th>
+			<th>小分類</th>
+			<th>成分(N)</th>
+			<th>成分(p)</th>
+			<th>成分(k)</th>
+			<th>支店</th>
+			<th>工場</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @items.each do |item| %>
+			<tr>
+				<td><%= item.code %></td>
+				<td><%= item.name %></td>
+				<td><%= item.large_classification_i18n %></td>
+				<td><%= item.small_classification_i18n %></td>
+				<td><%= item.component_n %></td>
+				<td><%= item.component_p %></td>
+				<td><%= item.component_k %></td>
+				<td><%= item.branches.present? ? item.branches.map {|n| n.name }.join(', ') : '' %></td>
+				<td><%= item.factories.present? ? item.factories.map {|n| n.name }.join(', ') : '' %></td>
+				<td>
+				  <%= link_to "編集", [:edit, item] %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+ 
+<% else %>
+	<p>登録された品目はありません。</p>
+<% end %>
