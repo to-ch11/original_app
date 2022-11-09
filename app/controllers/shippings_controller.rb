@@ -12,6 +12,7 @@ class ShippingsController < BaseController
   
   def new
     @shipping = current_user.shippings.build
+    @items = Item.order(created_at: :desc)
   end
   
   def edit

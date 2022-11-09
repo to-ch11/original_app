@@ -1,12 +1,33 @@
 
 <table>
- <tr>
-	 <th><%= form.label :quantity, "数量" %></th>
-	 <td><%= form.text_field :quantity %></td>
- </tr>
- <tr>
-	<th><%= form.label :date_on, "出荷日" %></th>
-	<td><%= form.text_field :date_on %></td>
- </tr>
+  	<thead>
+	<table>
+	<tr>
+　　<th>品目コード</th>
+　　<th>品目名称</th>
+			<% (0..11).each do |n| %>
+				<th><%= (Date.current + n.month).month %>月</th>
+			<% end %>
+	</tr>
+	</thead>
+	<tbody>
+		<% @items.each do |item| %>
+	<tr>
+		<td><%= item.code %></td>
+		<td><%= item.name %></td>
+    <% end %>
+</tr>
+
+  <tr>
+    <th><%= form.label :quantity, "数量" %></th>
+    <td><%= form.text_field :quantity %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :date_on, "出荷日" %></th>
+    <td><%= form.date_select :date_on,
+	 						start_year: 2020, end_year: Time.current.year,
+	 						use_month_numbers: true, discard_day: true %></td>
+  </tr>
+  </tbody>
 </table>
 <%= link_to "出荷計画一覧に戻る", :shippings %>
