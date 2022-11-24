@@ -12,6 +12,8 @@
 　　<th>品目名称</th>
 　　<th>支店</th>
 　　<th>工場</th>
+　　<th>大分類</th>
+　　<th>小分類</th>
 			<% (0..11).each do |n| %>
 				<th><%= (Date.current + n.month).month %>月</th>
 			<% end %>
@@ -24,6 +26,8 @@
 		<td><%= item.name %></td>
 		<td><%= item.branches.present? ? item.branches.map {|n| n.name }.join(', ') : '' %></td>
 		<td><%= item.factories.present? ? item.factories.map {|n| n.name }.join(', ') : '' %></td>
+		<td><%= item.large_classification_i18n %></td>
+		<td><%= item.small_classification_i18n %></td>
 			<% item.shippings.each do |shipping| %>
 		<td><%= f.text_field "shipping_#{shipping.id}_#{shipping.date_on}" %></td>
 		<td>

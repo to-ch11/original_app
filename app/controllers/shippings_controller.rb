@@ -17,6 +17,7 @@ class ShippingsController < BaseController
   
   def edit
     @shipping = current_user.shippings.find(params[:id])
+    @item = Item.find(@shipping.item_id)
   end
   
   def create

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_06_031225) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_20_012416) do
   create_table "branches", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -18,11 +18,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_06_031225) do
   end
 
   create_table "budgets", force: :cascade do |t|
-    t.date "date_on"
-    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "item_id"
+  end
+
+  create_table "budgets_details", force: :cascade do |t|
+    t.integer "budget_id", null: false
+    t.string "year_month"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["budget_id"], name: "index_budgets_details_on_budget_id"
   end
 
   create_table "factories", force: :cascade do |t|
@@ -61,25 +68,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_06_031225) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "shipping_details", force: :cascade do |t|
+    t.integer "shipping_id", null: false
+    t.string "year_month"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shipping_id"], name: "index_shipping_details_on_shipping_id"
+  end
+
   create_table "shippings", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.date "date_on"
-    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "item_id"
     t.integer "budget_id"
     t.index ["user_id"], name: "index_shippings_on_user_id"
-  end
-
-  create_table "totallings", force: :cascade do |t|
-    t.integer "item_id_id", null: false
-    t.date "year"
-    t.date "month"
-    t.integer "shipping_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id_id"], name: "index_totallings_on_item_id_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,10 +99,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_06_031225) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "budgets_details", "budgets"
   add_foreign_key "item_branch_relations", "branches"
   add_foreign_key "item_branch_relations", "items"
   add_foreign_key "item_factory_relations", "factories"
   add_foreign_key "item_factory_relations", "items"
+  add_foreign_key "shipping_details", "shippings"
   add_foreign_key "shippings", "users"
-  add_foreign_key "totallings", "item_ids"
 end
