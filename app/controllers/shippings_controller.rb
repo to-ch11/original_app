@@ -45,11 +45,11 @@ class ShippingsController < BaseController
   private
 
   def set_shipping
-    @shipping = current_user.shippings.find(params[:id])
+    @shipping = current_user.shippings.find(params[:shipping_id])
   end
 
   def shipping_params
-    params.require(:shipping).permit(:item_id, :user_id, :budget_id, :date_on, :quantity)
+    params.require(:shipping).permit(:item_id, :user_id, :budget_id, :year)
   end
 
 end

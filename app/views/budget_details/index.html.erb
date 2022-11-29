@@ -1,0 +1,8 @@
+<% @budget_details.each do |budget_detail| %>
+
+<%= budget_detail.year_month %>
+<%= budget_detail.quantity %>
+
+<% end %>
+
+<%= link_to "予算明細登録", :new_budget_detail %>

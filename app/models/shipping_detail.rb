@@ -1,3 +1,3 @@
 class ShippingDetail < ApplicationRecord
-  belongs_to :shipping_id
+  belongs_to :shipping
 end

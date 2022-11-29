@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_20_012416) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_000909) do
   create_table "branches", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -21,11 +21,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_012416) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "item_id"
+    t.string "year"
   end
 
   create_table "budgets_details", force: :cascade do |t|
     t.integer "budget_id", null: false
-    t.string "year_month"
+    t.string "month"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -70,7 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_012416) do
 
   create_table "shipping_details", force: :cascade do |t|
     t.integer "shipping_id", null: false
-    t.string "year_month"
+    t.string "month"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -83,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_012416) do
     t.datetime "updated_at", null: false
     t.integer "item_id"
     t.integer "budget_id"
+    t.string "year"
     t.index ["user_id"], name: "index_shippings_on_user_id"
   end
 
