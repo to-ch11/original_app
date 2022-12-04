@@ -14,26 +14,25 @@
 　　<th>工場</th>
 　　<th>大分類</th>
 　　<th>小分類</th>
-			<% (0..11).each do |n| %>
-				<th><%= (Date.current + n.month).month %>月</th>
+			<% (1..12).each do |n| %>
+				<th><%= n %>月</th>
 			<% end %>
 	</tr>
 	</thead>
 	<tbody>
 		<% @items.each do |item| %>
 	<tr>
-		<td><%= item.code %></td>
+		<td><%= link_to item.code,new_shipping_shipping_detail_path %></td>
 		<td><%= item.name %></td>
 		<td><%= item.branches.present? ? item.branches.map {|n| n.name }.join(', ') : '' %></td>
 		<td><%= item.factories.present? ? item.factories.map {|n| n.name }.join(', ') : '' %></td>
 		<td><%= item.large_classification_i18n %></td>
 		<td><%= item.small_classification_i18n %></td>
-			<% item.shippings.each do |shipping| %>
-		<td><%= f.text_field "shipping_#{shipping.id}_#{shipping.date_on}" %></td>
-		<td>
-			<%= link_to "編集", [:edit, shipping] %>
-		</td>
+			<% item.shippings.where(year: Date.current.year).each do |shipping| %>
+			<% shipping.shipping_details.each do |shipping_detail| %>
+			<td><%= shipping_detail.quantity %></td>
 			<% end %>
+		<% end %>
 	</tr>
 	</tbody>
 	<% end %>

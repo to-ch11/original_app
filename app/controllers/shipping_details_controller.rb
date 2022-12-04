@@ -2,7 +2,7 @@ class ShippingDetailsController < BaseController
     before_action :set_shipping_detail, only: [:edit, :update, :destroy]
 
   def index
-    @shipping_details = ShippingDetail.all
+    @shipping_details = @shipping.shipping_details
   end
   
   def new
