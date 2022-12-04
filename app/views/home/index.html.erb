@@ -6,8 +6,5 @@
 	<li><%= link_to "品目登録", :items %></li>
 	<li><%= link_to "出荷明細", shipping_shipping_details_path(@shipping) %></li>
 	<li><%= link_to "予算明細", :budget_details %></li>
-	<%= link_to "#{@shipping.item&.name}の出荷一覧", shipping_shipping_details_path(@shipping) %>
-	<% @shipping_details.each do |shipping_detail| %>
-	  <%= link_to "#{shipping_detail.month}月", shipping_shipping_detail_path(@shipping, shipping_detail) %>
-	<% end %>
+
 </ul>

@@ -36,8 +36,12 @@ class ShippingDetailsController < BaseController
   
   private
   
+  def set_shipping
+    @shipping = Shipping.find(params[:shipping_id])
+  end
+  
   def set_shipping_detail
-    @shipping_detail = ShippingDetail.find(params[:shipping_id])
+    @shipping_detail = ShippingDetail.find(params[:shipping_detail_id])
   end
   
   def shipping_detail_params

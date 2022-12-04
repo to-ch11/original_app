@@ -17,6 +17,10 @@
 		<td><%= item.name %></td>
     <% end %>
 </tr>
+	<%= link_to "#{@shipping.item&.name}の出荷一覧", shipping_shipping_details_path(@shipping) %>
+	<% @shipping_details.each do |shipping_detail| %>
+	  <%= link_to "#{shipping_detail.month}月", shipping_shipping_detail_path(@shipping, shipping_detail) %>
+	<% end %>
 
   </tbody>
 </table>
